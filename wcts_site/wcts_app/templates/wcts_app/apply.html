@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Apply to WCTS</title>
+</head>
+<body>
+	<h1>Apply to WCTS</h1>
+	<form method="POST">
+		{% csrf_token %}
+		<table>
+			{{ form.as_table }}
+		</table>
+		<input type="submit" value="Submit Application">
+	</form>
+</body>
+
+</html>
