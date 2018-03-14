@@ -85,26 +85,25 @@ TOWNSHIPS = (
 	 ("O","Other"),
  )
  
-#warren county cities compiled by Ally McDonald
+#warren county cities and zips compiled by Ally McDonald
+#ZIPS = ("07820","07823","07825","07829","07831","07832","07833","07838","07840","07844","07846","07863","07865","07880","07882","08802","08804","08808","08827","08848","08865","08886","Others")
 CITIES = (
 	("AL","Allamuchy"),
-	("AT","Allamuchy Township"),
-	("ALP","Alpha"),
+	("AS","Asbury"),
 	("BE","Belvidere"),
 	("BL","Blairstown"),
+	("BLO","Bloomsbury"),
 	("BR","Broadway"),
 	("BU","Buttzville"),
 	("CH","Changewater"),
 	("CO","Columbia"),
 	("DE","Delaware"),
-	("DEP","Delaware Park"),
 	("GM","Great Meadows"),
 	("HAC","Hackettstown"),
-	("HAR","Hardwick"),
-	("HT","Harmony Township"),
+	("HAM","Hampton"),
 	("HO","Hope"),
 	("JO","Johnsonburg"),
-	("LO","Lopatcong"),
+	("MI","Milford"),
 	("OX","Oxford"),
 	("PH","Phillipsburg"),
 	("PM","Port Murray"),
@@ -112,36 +111,8 @@ CITIES = (
 	("VI","Vienna"),
 	("WA","Washington"),
 	("O","Others")
-	)
+)
 
-#compiled by Ally McDonald
-ZIPS = (
-	("07820","07820 Allamuchy"),
-	("07840","07840 Allamuchy Township"),
-	("08865","08865 Alpha"),
-	("07823","07823 Belvidere"),
-	("07825","07825 Blairstown"),
-	("08808","08808 Broadway"),
-	("07829","07829 Buttzville"),
-	("07831","07831 Changewater"),
-	("07832","07832 Columbia"),
-	("07833","07833 Delaware"),
-	("08865","08865 Delaware Park"),
-	("07838","07838 Great Meadows"),
-	("07840","07840 Hackettstown"),
-	("07825","07825 Hardwick"),
-	("08865","08865 Harmony Township"),
-	("07844","07844 Hope"),
-	("07846","07846 Johnsonburg"),
-	("08865","08865 Lopatcong"),
-	("07863","07863 Oxford"),
-	("08865","08865 Phillipsburg"),
-	("07865","07865 Port Murray"),
-	("08886","08886 Stewartsville"),
-	("07880","07880 Vienna"),
-	("07882","07882 Washington"),
-	("O","Others")
-	)
 
 #compiled by Omar Mohammed
 STATES = (
@@ -203,18 +174,43 @@ STATES = (
     ('WV', 'West Virginia'),
     ('WY', 'Wyoming')
 )
+#Omar
+MONTHS = (
+    (1, "January"),
+    (2, "February"),
+    (3, "March"),
+    (4, "April"),
+    (5, "May"),
+    (6, "June"),
+    (7, "July"),
+    (8, "August"),
+    (9, "September"),
+    (10, "October"),
+    (11, "November"),
+    (12, "December"),
+)
+#Omar
+YEARS = (
+   (2000, "2000"),
+   (2001, "2001"),
+   (2002, "2002"),
+   (2003, "2003"),
+   (2004, "2004"),
+   (2005, "2005"),
+)
 
 class Applicant(models.Model):
     first_name = models.CharField(max_length = 100)
     middle_letter = models.CharField(max_length = 1, blank = True)#OM removed null=True to fix ValueError
     last_name = models.CharField(max_length = 100)
-    #function "birth_date" needs rework.
-    birth_date = models.DateField()#forced value.
+    birth_month = models.IntegerField (choices = MONTHS) #add choices
+    birth_date = models.IntegerField()
+    birth_year = models.IntegerField (choices = YEARS, default = "2004")
     mailing_address = models.CharField(max_length = 100)
     apartment_number = models.CharField(max_length = 100, blank = True)
     city = models.CharField(max_length = 100, choices = CITIES)
     state = models.CharField(max_length = 30, default='NJ', choices = STATES)#OM added default 3/5
-    zip_code = models.CharField(max_length = 10, choices = ZIPS)
+    zip_code = models.CharField(max_length = 10)
     student_home_phone = models.CharField(validators=[phone_regex,], max_length = 100)
     township_municipality = models.CharField(max_length = 100, choices = TOWNSHIPS)
     parent_name_1 = models.CharField(max_length = 100)
@@ -229,7 +225,7 @@ class Applicant(models.Model):
     parent_2_apartment_number = models.CharField(max_length = 100, blank = True)
     parent_2_city = models.CharField(max_length = 100, blank = True, choices = CITIES)
     parent_2_state = models.CharField(max_length = 100, blank = True, choices = STATES)
-    parent_2_zip = models.CharField(max_length = 100, blank = True, choices = ZIPS)
+    parent_2_zip = models.CharField(max_length = 100, blank = True)
     school_presently_attending = models.CharField(max_length = 100, choices = SCHOOLS)
     guidance_counselor = models.CharField(max_length = 100)
     counselor_phone = models.CharField(validators=[phone_regex,] ,max_length = 100)
