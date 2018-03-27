@@ -12,13 +12,12 @@ class ApplicantForm(forms.ModelForm):
 def apply(request):
 	if request.method != "POST":
 		form = ApplicantForm()
-		
 	else:
 		form = ApplicantForm(request.POST)
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect('/confirm/')
 	return render(request, 'wcts_app/apply.html', {'form': form})
-
+		
 def confirm(request):
 	return render(request, 'wcts_app/confirm.html', {'':''})

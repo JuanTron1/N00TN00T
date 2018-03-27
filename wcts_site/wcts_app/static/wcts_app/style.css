@@ -1,0 +1,85 @@
+ body{
+      /*background-color: #6589B7;*/
+      background: linear-gradient(#6589B7, #A8BCFA, #BACDFB, #CBDEFC,#DCEFFD);
+      color: #000000;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+h1{
+	text-align: center;
+}
+
+th{
+	text-align: right;
+}
+    
+    
+    form{
+      border-width: 1px;
+      border-style: solid;
+      width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 5px;
+      background-color: white;
+    }
+    
+    .optional{
+        color: Gray;
+    }
+    
+  .Sword {
+    color: rgb(6,22,150);
+    font-size:24px;
+    font-weight: bolder;
+   }
+   
+   #enter {
+  position:relative;
+  left:510px;
+  }
+  #id_middle_letter {
+   width:11px;
+  }
+  #id_birth_date {
+   width:38px;
+  }
+  #id_apartment_number {
+   width:40px;
+  }
+  #id_zip_code {
+   width:40px;
+  }
+  #id_student_home_phone {
+   width:90px;
+  }
+  #id_parent_cell_1 {
+   width:100px;
+  }
+  #id_parent_work_1 {
+   width:100px;
+  }
+  #id_parent_cell_2 {
+   width:100px;
+  }
+  #id_parent_work_2 {
+   width:100px;
+  }
+  #id_parent_2_apartment_number {
+   width:40px;
+  }
+  #id_parent_2_zip {
+   width:40px;
+  }
+  #id_counselor_phone {
+   width:90px;
+  }
+  #id_student_home_phone1 {
+    width:25px;
+  }
+  #id_student_home_phone2 {
+      width:25px;
+  }
+  #id_student_home_phone3 {
+      width:35px;
+  }
+
