@@ -17,7 +17,8 @@ def apply(request):
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect('/confirm/')
-	return render(request, 'wcts_app/apply.html', {'form': form})
+	return render(request, 'wcts_app/apply_custom.html', {'form': form})
+	#return render(request, 'wcts_app/apply.html', {'form': form})
 		
 def confirm(request):
 	return render(request, 'wcts_app/confirm.html', {'':''})
